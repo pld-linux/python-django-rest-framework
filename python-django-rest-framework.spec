@@ -11,11 +11,11 @@
 %define		pypi_name	djangorestframework
 Summary:	Web APIs for Django, made easy
 Name:		python-django-rest-framework
-Version:	3.3.2
-Release:	0.1
+Version:	3.4.7
+Release:	1
 License:	BSD
-Source0:	https://pypi.python.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	f45b14a65e95b85216018bd009341683
+Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
+# Source0-md5:	7bc1e3277cd9ad099ad5a277a2c0b433
 Group:		Libraries/Python
 URL:		http://www.django-rest-framework.org/
 BuildRequires:	rpm-pythonprov
@@ -113,8 +113,6 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files -f django_py2.lang
 %defattr(644,root,root,755)
-%doc PKG-INFO
-
 # license file is not distributed in source distribution
 # https://github.com/tomchristie/django-rest-framework/issues/2906
 # once it's released, license will be named LICENSE.md
@@ -137,11 +135,9 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-django-rest-framework -f django_py3.lang
 %defattr(644,root,root,755)
-%doc PKG-INFO
-
 # license file is not distributed in source distribution
 # https://github.com/tomchristie/django-rest-framework/issues/2906
-#%%license
+#%doc LICENSE.md
 %{py3_sitescriptdir}/rest_framework/__pycache__
 %dir %{py3_sitescriptdir}/rest_framework/
 %{py3_sitescriptdir}/rest_framework/authtoken
