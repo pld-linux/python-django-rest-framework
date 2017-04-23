@@ -7,7 +7,7 @@
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
-%define		module_name	rest_framework
+%define		module		rest_framework
 %define		pypi_name	djangorestframework
 Summary:	Web APIs for Django, made easy
 Name:		python-django-rest-framework
@@ -117,18 +117,18 @@ rm -rf $RPM_BUILD_ROOT
 # https://github.com/tomchristie/django-rest-framework/issues/2906
 # once it's released, license will be named LICENSE.md
 #%doc LICENSE.md
-%dir %{py_sitescriptdir}/rest_framework/
-%{py_sitescriptdir}/rest_framework/authtoken
-%dir %{py_sitescriptdir}/rest_framework/locale
-%dir %{py_sitescriptdir}/rest_framework/locale/??/
-%dir %{py_sitescriptdir}/rest_framework/locale/??/LC_MESSAGES
-%dir %{py_sitescriptdir}/rest_framework/locale/??_??/
-%dir %{py_sitescriptdir}/rest_framework/locale/??_??/LC_MESSAGES
-%{py_sitescriptdir}/rest_framework/static
-%{py_sitescriptdir}/rest_framework/templates
-%{py_sitescriptdir}/rest_framework/templatetags
-%{py_sitescriptdir}/rest_framework/utils
-%{py_sitescriptdir}/rest_framework/*.py*
+%dir %{py_sitescriptdir}/%{module}
+%{py_sitescriptdir}/%{module}/*.py*
+%{py_sitescriptdir}/%{module}/authtoken
+%{py_sitescriptdir}/%{module}/static
+%{py_sitescriptdir}/%{module}/templates
+%{py_sitescriptdir}/%{module}/templatetags
+%{py_sitescriptdir}/%{module}/utils
+%dir %{py_sitescriptdir}/%{module}/locale
+%dir %{py_sitescriptdir}/%{module}/locale/??/
+%dir %{py_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
+%dir %{py_sitescriptdir}/%{module}/locale/??_??/
+%dir %{py_sitescriptdir}/%{module}/locale/??_??/LC_MESSAGES
 %{py_sitescriptdir}/%{pypi_name}-%{version}-py%{py_ver}.egg-info
 %endif
 
@@ -138,18 +138,18 @@ rm -rf $RPM_BUILD_ROOT
 # license file is not distributed in source distribution
 # https://github.com/tomchristie/django-rest-framework/issues/2906
 #%doc LICENSE.md
-%{py3_sitescriptdir}/rest_framework/__pycache__
-%dir %{py3_sitescriptdir}/rest_framework/
-%{py3_sitescriptdir}/rest_framework/authtoken
-%dir %{py3_sitescriptdir}/rest_framework/locale
-%dir %{py3_sitescriptdir}/rest_framework/locale/??/
-%dir %{py3_sitescriptdir}/rest_framework/locale/??/LC_MESSAGES
-%dir %{py3_sitescriptdir}/rest_framework/locale/??_??/
-%dir %{py3_sitescriptdir}/rest_framework/locale/??_??/LC_MESSAGES
-%{py3_sitescriptdir}/rest_framework/static
-%{py3_sitescriptdir}/rest_framework/templates
-%{py3_sitescriptdir}/rest_framework/templatetags
-%{py3_sitescriptdir}/rest_framework/utils
-%{py3_sitescriptdir}/rest_framework/*.py*
+%dir %{py3_sitescriptdir}/%{module}
+%{py3_sitescriptdir}/%{module}/__pycache__
+%{py3_sitescriptdir}/%{module}/*.py*
+%{py3_sitescriptdir}/%{module}/authtoken
+%{py3_sitescriptdir}/%{module}/static
+%{py3_sitescriptdir}/%{module}/templates
+%{py3_sitescriptdir}/%{module}/templatetags
+%{py3_sitescriptdir}/%{module}/utils
+%dir %{py3_sitescriptdir}/%{module}/locale
+%dir %{py3_sitescriptdir}/%{module}/locale/??/
+%dir %{py3_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
+%dir %{py3_sitescriptdir}/%{module}/locale/??_??/
+%dir %{py3_sitescriptdir}/%{module}/locale/??_??/LC_MESSAGES
 %{py3_sitescriptdir}/%{pypi_name}-%{version}-py%{py3_ver}.egg-info
 %endif
