@@ -113,10 +113,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %files -f django_py2.lang
 %defattr(644,root,root,755)
-# license file is not distributed in source distribution
-# https://github.com/tomchristie/django-rest-framework/issues/2906
-# once it's released, license will be named LICENSE.md
-#%doc LICENSE.md
+%doc LICENSE.md
 %dir %{py_sitescriptdir}/%{module}
 %{py_sitescriptdir}/%{module}/*.py*
 %{py_sitescriptdir}/%{module}/authtoken
@@ -135,9 +132,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python3}
 %files -n python3-django-rest-framework -f django_py3.lang
 %defattr(644,root,root,755)
-# license file is not distributed in source distribution
-# https://github.com/tomchristie/django-rest-framework/issues/2906
-#%doc LICENSE.md
+%doc LICENSE.md
 %dir %{py3_sitescriptdir}/%{module}
 %{py3_sitescriptdir}/%{module}/__pycache__
 %{py3_sitescriptdir}/%{module}/*.py*
