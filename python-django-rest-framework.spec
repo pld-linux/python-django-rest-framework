@@ -19,6 +19,7 @@ Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_na
 Group:		Libraries/Python
 URL:		http://www.django-rest-framework.org/
 BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(find_lang) >= 1.39
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-modules
@@ -81,6 +82,7 @@ find . -name *.po -exec rm -f '{}' \;
 %endif
 
 %install
+rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 %py_postclean
@@ -90,13 +92,7 @@ find . -name *.po -exec rm -f '{}' \;
 %py3_install
 %endif
 
-%if 1
-# find-lang doesn't work, even with --all-name
-> django_py2.lang
-> django_py3.lang
-%else
-
-%find_lang django
+%find_lang django --all-name
 
 # separate into files for python2.7 and 3.x
 %if %{with python2}
@@ -104,7 +100,6 @@ grep "python%{py_ver}" django.lang > django_py2.lang
 %endif
 %if %{with python3}
 grep "python%{py3_ver}" django.lang > django_py3.lang
-%endif
 %endif
 
 %clean
@@ -124,8 +119,8 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py_sitescriptdir}/%{module}/locale
 %dir %{py_sitescriptdir}/%{module}/locale/??/
 %dir %{py_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
-%dir %{py_sitescriptdir}/%{module}/locale/??_??/
-%dir %{py_sitescriptdir}/%{module}/locale/??_??/LC_MESSAGES
+%dir %{py_sitescriptdir}/%{module}/locale/??_*/
+%dir %{py_sitescriptdir}/%{module}/locale/??_*/LC_MESSAGES
 %{py_sitescriptdir}/%{pypi_name}-%{version}-py%{py_ver}.egg-info
 %endif
 
@@ -144,7 +139,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{py3_sitescriptdir}/%{module}/locale
 %dir %{py3_sitescriptdir}/%{module}/locale/??/
 %dir %{py3_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
-%dir %{py3_sitescriptdir}/%{module}/locale/??_??/
-%dir %{py3_sitescriptdir}/%{module}/locale/??_??/LC_MESSAGES
+%dir %{py3_sitescriptdir}/%{module}/locale/??_*/
+%dir %{py3_sitescriptdir}/%{module}/locale/??_*/LC_MESSAGES
 %{py3_sitescriptdir}/%{pypi_name}-%{version}-py%{py3_ver}.egg-info
 %endif
