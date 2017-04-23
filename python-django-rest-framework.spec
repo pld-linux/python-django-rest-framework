@@ -11,11 +11,11 @@
 %define		pypi_name	djangorestframework
 Summary:	Web APIs for Django, made easy
 Name:		python-django-rest-framework
-Version:	3.4.7
-Release:	2
+Version:	3.5.4
+Release:	1
 License:	BSD
 Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_name}-%{version}.tar.gz
-# Source0-md5:	7bc1e3277cd9ad099ad5a277a2c0b433
+# Source0-md5:	979808c387dad8d0ebb6025c39dc7b94
 Group:		Libraries/Python
 URL:		http://www.django-rest-framework.org/
 BuildRequires:	rpm-pythonprov
