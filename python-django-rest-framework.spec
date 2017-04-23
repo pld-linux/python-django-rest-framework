@@ -19,7 +19,7 @@ Source0:	https://files.pythonhosted.org/packages/source/d/%{pypi_name}/%{pypi_na
 Group:		Libraries/Python
 URL:		http://www.django-rest-framework.org/
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(find_lang) >= 1.39
+BuildRequires:	rpmbuild(find_lang) >= 1.40
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
 BuildRequires:	python-modules
@@ -92,7 +92,7 @@ rm -rf $RPM_BUILD_ROOT
 %py3_install
 %endif
 
-%find_lang django --all-name
+%find_lang django --with-django
 
 # separate into files for python2.7 and 3.x
 %if %{with python2}
@@ -117,10 +117,6 @@ rm -rf $RPM_BUILD_ROOT
 %{py_sitescriptdir}/%{module}/templatetags
 %{py_sitescriptdir}/%{module}/utils
 %dir %{py_sitescriptdir}/%{module}/locale
-%dir %{py_sitescriptdir}/%{module}/locale/??/
-%dir %{py_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
-%dir %{py_sitescriptdir}/%{module}/locale/??_*/
-%dir %{py_sitescriptdir}/%{module}/locale/??_*/LC_MESSAGES
 %{py_sitescriptdir}/%{pypi_name}-%{version}-py%{py_ver}.egg-info
 %endif
 
@@ -137,9 +133,5 @@ rm -rf $RPM_BUILD_ROOT
 %{py3_sitescriptdir}/%{module}/templatetags
 %{py3_sitescriptdir}/%{module}/utils
 %dir %{py3_sitescriptdir}/%{module}/locale
-%dir %{py3_sitescriptdir}/%{module}/locale/??/
-%dir %{py3_sitescriptdir}/%{module}/locale/??/LC_MESSAGES
-%dir %{py3_sitescriptdir}/%{module}/locale/??_*/
-%dir %{py3_sitescriptdir}/%{module}/locale/??_*/LC_MESSAGES
 %{py3_sitescriptdir}/%{pypi_name}-%{version}-py%{py3_ver}.egg-info
 %endif
